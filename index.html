@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <title>Questly — Make today count</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Questly home"><span class="brand-mark">✦</span> questly</a>
+      <div class="topbar-right"><span class="today-label" id="today-label"></span><span class="avatar" aria-label="Your adventurer profile">A</span></div>
+    </header>
+
+    <main>
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">YOUR ADVENTURE, TODAY</p>
+          <h1>Make today <span>count.</span></h1>
+          <p class="subtitle">Small wins become legendary stories. What will you conquer?</p>
+        </div>
+        <div class="level-card"><div class="level-icon">⚔</div><div><span class="eyebrow">ADVENTURER LEVEL</span><strong id="level-number">Level 1</strong><span class="level-xp" id="total-xp">0 total XP</span></div></div>
+      </section>
+
+      <section class="overview-grid" aria-label="Daily progress">
+        <article class="progress-card panel">
+          <div class="card-heading"><div><p class="eyebrow">DAILY PROGRESS</p><h2><span id="completed-count">0</span> <span class="muted">/</span> <span id="quest-count">0</span> quests</h2></div><div class="progress-badge" id="progress-percent">0%</div></div>
+          <div class="progress-track" role="progressbar" aria-label="Daily quest completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+          <p class="progress-caption" id="progress-caption">Every great journey starts with one step.</p>
+        </article>
+        <article class="xp-card panel"><div class="xp-symbol">✧</div><div><p class="eyebrow">EARNED TODAY</p><h2><span id="today-xp">0</span> <span class="muted">XP</span></h2><p class="progress-caption">Keep the momentum going!</p></div></article>
+      </section>
+
+      <section class="quests-section">
+        <div class="section-heading"><div><p class="eyebrow">YOUR MISSION BOARD</p><h2>Daily quests <span class="quest-emoji">✧</span></h2></div><button class="add-button" id="open-form" type="button"><span aria-hidden="true">＋</span> New quest</button></div>
+        <form class="add-quest-form panel" id="quest-form" hidden>
+          <label for="quest-title">Quest name</label>
+          <div class="form-row"><input id="quest-title" name="title" maxlength="70" placeholder="e.g. Take a 20-minute walk" required><label class="xp-input-label" for="quest-reward">XP <input id="quest-reward" name="reward" type="number" min="5" max="100" value="20"></label><button class="primary-button" type="submit">Add quest</button><button class="cancel-button" id="cancel-form" type="button">Cancel</button></div>
+        </form>
+        <div class="quest-list" id="quest-list" aria-live="polite"></div>
+        <div class="empty-state panel" id="empty-state" hidden><span>✦</span><h3>Your quest board is clear</h3><p>Add a quest and start building your streak of small wins.</p><button class="primary-button" id="empty-add" type="button">Create a quest</button></div>
+      </section>
+      <footer>One quest at a time. You’ve got this. <span>✦</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
